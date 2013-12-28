@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
+        <file>qml/Pages/MainListPage.qml</file>
+        <file>qml/Components/Page.qml</file>
+        <file>qml/Pages/MainListModel.qml</file>
+        <file>qml/Pages/TaskItem.qml</file>
     </qresource>
 </RCC>
