@@ -3,6 +3,7 @@ import QtQuick.Window 2.0
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 import "../Components"
+import "../../js/Storage.js" as JS
 
 Page {
 	id: mainListPage
@@ -19,40 +20,28 @@ Page {
 			property real mm: Screen.pixelDensity
 
 			clip: true
-//			model: mainListModel
-			model: ListModel {
-				ListElement {
-					_name: "進捗1"
-					_detail: "hogehoge"
-					_percent: "80"
+//			model: MainListModel { }
+//			model: {
+//			var storage = new JS.Storage()
+//				return storage.taskListModel()
+//			}
+
+			model: {
+				var storage = new JS.Storage()
+				var r = storage.readTasks("")
+				for(var i = 0; i < r.rows.length; i++) {
+					listModel.append({"name": r.rows.item(i)['name'],
+									 "detail": r.rows.item(i)['detail'],
+									 "percent": r.rows.item(i)['percent']})
 				}
-				ListElement {
-					_name: "進捗2"
-					_detail: "fugafuga"
-					_percent: "60"
-				}
-				ListElement {
-					_name: "進捗3"
-					_detail: "hogefuga"
-					_percent: "40"
-				}
-				ListElement {
-					_name: "進捗4"
-					_detail: "piyopiyo"
-					_percent: "20"
-				}
-				ListElement {
-					_name: "進捗5"
-					_detail: "poyopoyo"
-					_percent: "0"
-				}
+				return listModel
 			}
 
 			delegate: TaskItem {
 				isProject: false
-				name: _name
-				detail: _detail
-				percent: _percent
+				name: model.name
+				detail: model.detail
+				percent: model.percent
 			}
 		}
 
@@ -62,7 +51,5 @@ Page {
 		}
 	}
 
-	MainListModel {
-		id: mainListModel
-	}
+	ListModel {id: listModel }
 }

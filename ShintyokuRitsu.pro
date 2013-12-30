@@ -8,10 +8,11 @@ SOURCES += main.cpp
 
 OTHER_FILES += \
 	qml/main.qml \
-    qml/Pages/MainListPage.qml \
-    qml/Components/Page.qml \
-    qml/Pages/MainListModel.qml \
-    qml/Pages/TaskItem.qml
+	qml/Pages/MainListPage.qml \
+	qml/Pages/MainListModel.qml \
+	qml/Pages/TaskItem.qml \
+	qml/Components/Page.qml \
+	js/Storage.js
 
 RESOURCES += \
 	qml.qrc

@@ -7,6 +7,9 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 	QQmlApplicationEngine engine(QUrl("qrc:/qml/main.qml"));
+
+	qDebug() << "OfflineStoragePath: " << engine.offlineStoragePath();
+
 	QObject *topLevel = engine.rootObjects().value(0);
 	QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
 	if ( !window ) {

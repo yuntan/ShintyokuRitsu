@@ -5,5 +5,6 @@
         <file>qml/Components/Page.qml</file>
         <file>qml/Pages/MainListModel.qml</file>
         <file>qml/Pages/TaskItem.qml</file>
+        <file>js/Storage.js</file>
     </qresource>
 </RCC>
