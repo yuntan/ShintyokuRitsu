@@ -3,8 +3,8 @@
         <file>qml/main.qml</file>
         <file>qml/Pages/MainListPage.qml</file>
         <file>qml/Components/Page.qml</file>
-        <file>qml/Pages/MainListModel.qml</file>
         <file>qml/Pages/TaskItem.qml</file>
         <file>js/Storage.js</file>
+        <file>qml/Components/ShintyokuPie.qml</file>
     </qresource>
 </RCC>

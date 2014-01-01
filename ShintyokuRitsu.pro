@@ -11,7 +11,8 @@ OTHER_FILES += \
 	qml/Pages/MainListPage.qml \
 	qml/Pages/TaskItem.qml \
 	qml/Components/Page.qml \
-	js/Storage.js
+	js/Storage.js \
+    qml/Components/ShintyokuPie.qml
 
 RESOURCES += \
 	qml.qrc
