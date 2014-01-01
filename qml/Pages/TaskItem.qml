@@ -1,5 +1,4 @@
 import QtQuick 2.2
-import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import "../Components"
 
@@ -62,24 +61,27 @@ Rectangle {
 			right: parent.right
 			margins: 2.*mm
 		}
-//		height: Math.max(textCol.height, pie.height)
 		spacing: 1.*mm
 
 		ColumnLayout {
 			id: textCol
 			Layout.fillWidth: true; Layout.fillHeight: true
-			spacing: 3.*mm
-			Label {
+			spacing: 2.*mm
+			LineLabel {
 				id: titleLabel
 				Layout.fillWidth: true
+				font.bold: true
+				font.pointSize: 15
 			}
-			Label {
+			LineLabel {
 				id: detailLabel
 				Layout.fillWidth: true
+				font.pointSize: 12
 			}
-			Label {
+			LineLabel {
 				id: deadlineLabel
 				Layout.fillWidth: true
+				color: "red"
 			}
 			Item { Layout.fillHeight: true }
 		}
