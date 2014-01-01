@@ -12,7 +12,14 @@ OTHER_FILES += \
 	qml/Pages/TaskItem.qml \
 	qml/Components/Page.qml \
 	js/Storage.js \
-    qml/Components/ShintyokuPie.qml
+    qml/Components/ShintyokuPie.qml \
+    qml/Pages/AddTaskPage.qml \
+    qml/Components/LineLabel.qml \
+    qml/Components/LineEdit.qml \
+    qml/Components/BoxEdit.qml \
+    qml/Components/BoxLabel.qml \
+    qml/Components/DayPicker.qml \
+    qml/Components/TimePicker.qml
 
 RESOURCES += \
 	qml.qrc
