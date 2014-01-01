@@ -25,8 +25,12 @@ ApplicationWindow {
 		console.debug("pixelDensity: ", Screen.pixelDensity)
 	}
 
-	property Component mainListPage: MainListPage { }
-	property Component addTaskPage: AddTaskPage { }
+	property Component mainListPage: MainListPage {
+		onAddTask: stackView.push(addTaskPage)
+	}
+	property Component addTaskPage: AddTaskPage {
+		onBack: stackView.pop()
+	}
 
 	function updateStatusBar (message) {
 		statusLabel.text = message

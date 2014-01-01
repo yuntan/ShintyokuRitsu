@@ -9,6 +9,8 @@ Page {
 	id: mainListPage
 	title: qsTr("How is the progress?")
 
+	signal addTask()
+
 	ScrollView {
 		anchors.fill: parent
 		flickableItem.interactive: true
@@ -16,9 +18,6 @@ Page {
 
 		ListView {
 			id: mainList
-
-			property real mm: Screen.pixelDensity
-
 			clip: true
 			model: {
 				console.debug("Making model...")
@@ -52,10 +51,24 @@ Page {
 		}
 
 		style: ScrollViewStyle {
-			minimumHandleLength: 8*mm
+			minimumHandleLength: 8.*mm
 			transientScrollBars: true
 		}
 	}
 
 	ListModel {id: listModel }
+
+	titleBar: ToolButton {
+		width: height; height: parent.height
+		action: Action {
+			iconSource: "qrc:/img/plus.png" // TODO make resource file
+			onTriggered: addTask()
+		}
+		style: ButtonStyle {
+			background: Rectangle {
+				width: control.width; height: control.height
+				color: control.pressed ? "#80000000" : "transparent"
+			}
+		}
+	}
 }
