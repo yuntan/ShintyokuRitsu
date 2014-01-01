@@ -7,7 +7,7 @@ import "../../js/Storage.js" as JS
 
 Page {
 	id: mainListPage
-	title: qsTr("Task List")
+	title: qsTr("How is the progress?")
 
 	ScrollView {
 		anchors.fill: parent
@@ -20,12 +20,6 @@ Page {
 			property real mm: Screen.pixelDensity
 
 			clip: true
-//			model: MainListModel { }
-//			model: {
-//			var storage = new JS.Storage()
-//				return storage.taskListModel()
-//			}
-
 			model: {
 				console.debug("Making model...")
 				var storage = new JS.Storage()
