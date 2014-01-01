@@ -6,5 +6,13 @@
         <file>qml/Pages/TaskItem.qml</file>
         <file>js/Storage.js</file>
         <file>qml/Components/ShintyokuPie.qml</file>
+        <file>qml/Pages/AddTaskPage.qml</file>
+        <file>qml/Components/BoxEdit.qml</file>
+        <file>qml/Components/BoxLabel.qml</file>
+        <file>qml/Components/DayPicker.qml</file>
+        <file>qml/Components/FlatButton.qml</file>
+        <file>qml/Components/LineEdit.qml</file>
+        <file>qml/Components/LineLabel.qml</file>
+        <file>qml/Components/TimePicker.qml</file>
     </qresource>
 </RCC>

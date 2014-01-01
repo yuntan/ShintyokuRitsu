@@ -26,6 +26,7 @@ ApplicationWindow {
 	}
 
 	property Component mainListPage: MainListPage { }
+	property Component addTaskPage: AddTaskPage { }
 
 	function updateStatusBar (message) {
 		statusLabel.text = message
