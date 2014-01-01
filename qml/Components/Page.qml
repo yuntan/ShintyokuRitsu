@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.0
+import QtQuick.Controls.Styles 1.1
 import QtQuick.Layouts 1.1
 
 Rectangle {
@@ -8,7 +9,7 @@ Rectangle {
 	// ensure children added do not draw over the titleBar
 	property alias data: main.data
 	property alias title: titleLabel.text
-	property alias titleBarContents: titleBarItem.data
+	property alias titleBar: titleBarItem.data
 	property color mainColor: "#56c4c3"
 	property color titleColor: "#1ebba6"
 
@@ -22,7 +23,7 @@ Rectangle {
 	color: mainColor
 
 	Rectangle {
-		id: titleBar
+		id: titleBarRect
 
 		z:10 // so page contents doesn't draw on top
 		anchors.top: parent.top
@@ -33,14 +34,14 @@ Rectangle {
 
 		RowLayout {
 			anchors.fill: parent
-			spacing: 3*mm
+			spacing: 2.*mm
 
 			// Back arrow button
 			Rectangle {
 				id: backButton
 				Layout.preferredWidth: 10*mm
 				Layout.fillHeight: true
-				enabled: page.Stack.index > 1
+				enabled: page.Stack.index > 0
 				color: Qt.darker(titleColor, 1.2)
 				Image {
 					anchors.fill: parent
@@ -89,16 +90,21 @@ Rectangle {
 			}
 
 			Item {
-				Layout.preferredWidth: titleBarItem.implicitWidth
+				Layout.minimumWidth: titleBarItem.childrenRect.width + 2.*mm
 				Layout.fillHeight: true
-				Item {
+				ToolBar {
 					id: titleBarItem
-
 					anchors {
 						fill: parent
-						topMargin: 1*mm
-						bottomMargin: 1*mm
-						rightMargin: 3*mm
+						topMargin: 1.*mm
+						bottomMargin: 1.*mm
+						rightMargin: 2.*mm
+					}
+					style: ToolBarStyle {
+						background: Rectangle {
+							width: control.width; height: control.height
+							color: "transparent"
+						}
 					}
 				}
 			}
@@ -108,7 +114,7 @@ Rectangle {
 	//bottom border line of titleBar
 	Rectangle {
 		id: titleBarLine
-		anchors.top: titleBar.bottom
+		anchors.top: titleBarRect.bottom
 		width: parent.width; height: 1*mm
 		color: Qt.darker(titleColor, 1.6)
 	}
