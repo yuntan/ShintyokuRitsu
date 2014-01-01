@@ -12,38 +12,53 @@ function Storage() {
 			'name TEXT, ' +
 			'isProject TEXT, ' +
 			'importance INTEGER, ' +
-			'deadline DATA, ' +
+			'deadline NONE, ' +
 			'detail TEXT, ' +
+			'targetTime INTEGER, ' +
 			'percent INTEGER, ' +
 			'tag TEXT, ' +
-			'project TEXT)')})
+			'projectId INTEGER)')})
 	console.debug("Database created")
 }
 
 Storage.prototype = {
 
-	readTasks : function(project) {
-		console.debug("Reading tasks...")
+	readTasks : function(projectId) {
+		console.debug("Reading tasks... (projectId: " + projectId + ")")
 		var r
 		this.db.transaction(function(tx) {
-			if(project === "" || project === undefined) {
-				r = tx.executeSql('SELECT * FROM Tasks')
+			if(projectId === "" || projectId === undefined) {
+				r = tx.executeSql('SELECT * FROM Tasks WHERE projectId = -1')
 			}
 			else {
-				r = tx.executeSql('SELECT * FROM Tasks WHERE project = ?', project)
+				r = tx.executeSql('SELECT * FROM Tasks WHERE projectId = ?', projectId)
 			}
 		})
 		return r
 	},
 
-	addTask : function(name, isProject, importance, deadline, detail, percent, tag, project) {
+	readTask : function(id) {
+		console.debug("Reading task... (id: " + id + ")")
+		var r
+		this.db.transaction(function(tx) {
+			if(id === undefined) {
+				return
+			}
+			else {
+				r = tx.executeSql('SELECT * FROM Tasks WHERE id = ?', id)
+			}
+		})
+		return r
+	},
+
+	addTask : function(name, isProject, importance, deadline, detail, percent, tag, projectId) {
 		console.debug("Adding Task...")
 		this.db.transaction(function(tx) {
 			var r = tx.executeSql(
 					'INSERT OR REPLACE INTO Tasks(name, isProject, importance, ' +
-					'deadline, detail, percent, tag, project) ' +
+					'deadline, detail, targetTime, percent, tag, projectId) ' +
 					'VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
-					[name, isProject, importance, deadline, detail, percent, tag, project])
+					[name, isProject, importance, deadline, detail, percent, tag, projectId])
 			console.log("Task Saved: " + r)
 		})
 	}
