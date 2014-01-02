@@ -45,8 +45,9 @@ ApplicationWindow {
 
 		delegate: StackViewDelegate {
 			pushTransition: StackViewTransition {
-				XAnimator {
+				PropertyAnimation {
 					target: enterItem
+					property: "x"
 					duration: 500
 					easing.type: Easing.OutQuad
 					from: enterItem.width
@@ -55,8 +56,9 @@ ApplicationWindow {
 			}
 
 			popTransition: StackViewTransition {
-				XAnimator {
+				PropertyAnimation {
 					target: exitItem
+					property: "x"
 					duration: 500
 					easing.type: Easing.InQuad
 					from: 0
@@ -65,8 +67,9 @@ ApplicationWindow {
 			}
 
 			replaceTransition: StackViewTransition {
-				XAnimator {
+				PropertyAnimation {
 					target: enterItem
+					property: "x"
 					duration: 500
 					easing.type: Easing.OutQuad
 					from: enterItem.width
