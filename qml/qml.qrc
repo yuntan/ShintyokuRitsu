@@ -13,5 +13,7 @@
         <file>Components/Page.qml</file>
         <file>Components/ShintyokuPie.qml</file>
         <file>Components/TimePicker.qml</file>
+        <file>Components/TitleBarButton.qml</file>
+        <file>Components/Card.qml</file>
     </qresource>
 </RCC>

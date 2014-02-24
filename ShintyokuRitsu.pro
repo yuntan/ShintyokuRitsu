@@ -22,6 +22,7 @@ QML_FILES += \
 	qml/Components/DayPicker.qml \
 	qml/Components/TimePicker.qml \
     qml/Components/FlatButton.qml \
+    qml/Components/TitleBarButton.qml \
     qml/Components/Card.qml
 
 JS_FILES += \

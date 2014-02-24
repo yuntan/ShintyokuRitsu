@@ -37,7 +37,6 @@ Button {
 
             Connections	{
                 target: control
-                onFontChanged: font = control.font
                 onFontPixelSizeChanged: font.pixelSize = control.fontPixelSize
             }
         }
