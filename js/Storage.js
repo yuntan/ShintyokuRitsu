@@ -11,7 +11,7 @@
   detail (str): Task detail
   targetTime (int): Estimated time the task requires in min
   percent (int): Current task rate
-  tag (str): comma separated tags
+  folder (str): folder the task belong to
   projectId (int): If the isProject is true, the id of task
     that the task belong to. Else 0.
 **********************************************************/
@@ -31,7 +31,7 @@ function Storage() {
 			'detail TEXT, ' +
 			'targetTime INTEGER, ' +
 			'percent INTEGER, ' +
-            'tag TEXT, ' +
+            'folder TEXT, ' +
 			'projectId INTEGER)')})
 	console.debug("Database created")
 }
@@ -66,14 +66,14 @@ Storage.prototype = {
 		return r
 	},
 
-    addTask : function(name, isProject, importance, deadline, detail, targetTime, percent, tag, projectId) {
+    addTask : function(name, isProject, importance, deadline, detail, targetTime, percent, folder, projectId) {
 		console.debug("Adding Task...")
 		this.db.transaction(function(tx) {
 			var r = tx.executeSql(
 					'INSERT OR REPLACE INTO Tasks(name, isProject, importance, ' +
-					'deadline, detail, targetTime, percent, tag, projectId) ' +
+                    'deadline, detail, targetTime, percent, folder, projectId) ' +
                     'VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    [name, isProject, importance, deadline, detail, targetTime, percent, tag, projectId])
+                    [name, isProject, importance, deadline, detail, targetTime, percent, folder, projectId])
 			console.log("Task Saved: " + r)
 		})
 	}

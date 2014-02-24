@@ -31,7 +31,7 @@ Page {
                                              "detail": r.rows.item(i)['detail'],
                                              "targetTime": r.rows.item(i)['targetTime'],
                                              "percent": r.rows.item(i)['percent'],
-                                             "tag": r.rows.item(i)['tag'],
+                                             "folder": r.rows.item(i)['folder'],
                                              "projectId": r.rows.item(i)['projectId']})
                     }
                     return listModel
@@ -44,7 +44,7 @@ Page {
                     deadline: model.deadline
                     detail: model.detail
                     percent: model.percent
-                    tag: model.tag
+                    folder: model.folder
                 }
             }
         }

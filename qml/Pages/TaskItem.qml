@@ -11,14 +11,14 @@ Rectangle {
 	property alias deadline: deadlineLabel.text
 	property alias detail: detailLabel.text
 	property int percent
-	property string tag
+    property string folder
 	property int projectId
 
 	signal pressed()
 	signal pressAndHold()
 
-	width: parent.width; height: mainRow.height
-	color: "transparent"
+    width: parent.width; height: mainRow.height
+    color: mouse.pressed ? "#40000000" : "transparent"
 
 	ColumnLayout {
 		id: indicatorCol
@@ -32,22 +32,23 @@ Rectangle {
         width: 15*dp
 		spacing: 0
 
+
 		Rectangle {
 			id: importanceRect
 			Layout.fillWidth: true
 			Layout.preferredHeight: width
 			Component.onCompleted: {
 				switch(importance) {
-				case 0: color = "white"; break
-				case 1: color = "red"; break
-				case 2: color = "red"; break
-				case 3: color = "red"; break
+                case 0: color = "#ffaaaa"; break
+                case 1: color = "#ff8080"; break
+                case 2: color = "#ff5555"; break
+                case 3: color = "#ff2a2a"; break
 				}
 			}
 		}
 
 		Rectangle {
-			id: tagRect
+            id: folderRect
 			Layout.fillWidth: true; Layout.fillHeight: true
 			color: "white"
 		}
@@ -108,12 +109,9 @@ Rectangle {
 	}
 
 	MouseArea {
+        id: mouse
 		anchors.fill: parent
 		onPressed: taskItem.pressed()
-		onPressAndHold: taskItem.pressAndHold()
-		onPressedChanged: {
-			if(pressed) { taskItem.color = "#80000000" }
-			else { taskItem.color = "transparent" }
-		}
-	}
+        onPressAndHold: taskItem.pressAndHold()
+    }
 }

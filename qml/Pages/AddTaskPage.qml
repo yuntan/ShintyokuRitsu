@@ -126,10 +126,10 @@ Page {
 
                 // row8
                 LineLabel {
-                    text: qsTr("Tags")
+                    text: qsTr("Folder")
                 }
                 LineEdit {
-                    id: tagEdit
+                    id: folderEdit
                     Layout.fillWidth: true
                 }
             }
@@ -148,7 +148,7 @@ Page {
                     }
                     storage.addTask(nameEdit.text, projCheck.checked, importance,
                                     deadlineEdit.text, detailEdit.text, targetTimeEdit.text,
-                                    rateSlider.value, tagEdit.text, 0)
+                                    rateSlider.value, folderEdit.text, 0)
                     updateStatusBar(qsTr("Task added"))
                     stackView.pop()
                 }
