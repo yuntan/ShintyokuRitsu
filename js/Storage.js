@@ -1,5 +1,20 @@
-.pragma library
+//.pragma library
 .import QtQuick.LocalStorage 2.0 as Sql
+
+/*********************************************************
+  id (int): Task ID
+  name (str): Task name
+  isProject (bool): Task is part of another project or not
+  importance (int): 0, 1, 2, or 3. Higher priority higher
+    number.
+  deadline (date): Task deadline
+  detail (str): Task detail
+  targetTime (int): Estimated time the task requires in min
+  percent (int): Current task rate
+  tag (str): comma separated tags
+  projectId (int): If the isProject is true, the id of task
+    that the task belong to. Else 0.
+**********************************************************/
 
 function Storage() {
 	console.debug("Creating database...")
@@ -11,12 +26,12 @@ function Storage() {
 			'id INTEGER PRIMARY KEY, ' +
 			'name TEXT, ' +
 			'isProject TEXT, ' +
-			'importance INTEGER, ' +
+            'importance INTEGER, ' +
 			'deadline NONE, ' +
 			'detail TEXT, ' +
 			'targetTime INTEGER, ' +
 			'percent INTEGER, ' +
-			'tag TEXT, ' +
+            'tag TEXT, ' +
 			'projectId INTEGER)')})
 	console.debug("Database created")
 }
@@ -51,14 +66,14 @@ Storage.prototype = {
 		return r
 	},
 
-	addTask : function(name, isProject, importance, deadline, detail, percent, tag, projectId) {
+    addTask : function(name, isProject, importance, deadline, detail, targetTime, percent, tag, projectId) {
 		console.debug("Adding Task...")
 		this.db.transaction(function(tx) {
 			var r = tx.executeSql(
 					'INSERT OR REPLACE INTO Tasks(name, isProject, importance, ' +
 					'deadline, detail, targetTime, percent, tag, projectId) ' +
-					'VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
-					[name, isProject, importance, deadline, detail, percent, tag, projectId])
+                    'VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                    [name, isProject, importance, deadline, detail, targetTime, percent, tag, projectId])
 			console.log("Task Saved: " + r)
 		})
 	}

@@ -31,8 +31,8 @@ Rectangle {
 		color: titleColor
 
 		RowLayout {
-			anchors.fill: parent
-            spacing: 15*dp
+            anchors.fill: parent
+            spacing: 0
 
             Rectangle {
                 id: titleIconRect
@@ -69,14 +69,15 @@ Rectangle {
 				Label {
 					id: titleLabel
 
-					width: parent.width
+                    width: parent.width - 5*dp
 					anchors {
 						verticalCenter: parent.verticalCenter
                         left: parent.left
+                        leftMargin: 5*dp
 					}
 
 					color: "whitesmoke"
-                    font.pointSize: 30*dp
+                    font.pixelSize: 25*dp
 					fontSizeMode: Text.HorizontalFit
 					font.bold: true
 				}
@@ -87,27 +88,19 @@ Rectangle {
 				}
 			}
 
-			Item {
-                Layout.minimumWidth: titleBarItem.childrenRect.width + 2*dp
-				Layout.fillHeight: true
-				ToolBar {
-					id: titleBarItem
-					anchors {
-                        fill: parent
-                        topMargin: 5*dp
-                        bottomMargin: 5*dp
-                        rightMargin: 15*dp
-                    }
-					style: ToolBarStyle {
-						background: Rectangle {
-							width: control.width; height: control.height
-							color: "transparent"
-						}
-					}
-				}
-			}
-		}
-	}
+            Item {
+                id: titleBarItem
+                Layout.minimumWidth: childrenRect.width
+                Layout.preferredWidth: childrenRect.width
+                Layout.fillHeight: true
+            }
+
+            Item { // spacer
+                Layout.minimumWidth: 5*dp
+                Layout.preferredWidth: 5*dp
+            }
+        }
+    }
 
 	//bottom border line of titleBar
 	Rectangle {

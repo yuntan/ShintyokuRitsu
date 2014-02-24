@@ -3,6 +3,7 @@ import QtQuick.Window 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 import "Pages"
+import "../js/Storage.js" as JS
 
 ApplicationWindow {
 	id: mainWindow
@@ -26,10 +27,14 @@ ApplicationWindow {
 	property Component mainListPage: MainListPage {
 //        onTitleIconClicked: openSideMenu()
 		onAddTask: stackView.push(addTaskPage)
+        onUpdateStatusBar: mainWindow.updateStatusBar(message)
 	}
 	property Component addTaskPage: AddTaskPage {
         onTitleIconClicked: stackView.pop()
+        onUpdateStatusBar: mainWindow.updateStatusBar(message)
 	}
+
+    property var storage: new JS.Storage()
 
 	function updateStatusBar (message) {
 		statusLabel.text = message
@@ -88,7 +93,7 @@ ApplicationWindow {
 
 	statusBar: StatusBar {
 		width: parent.width
-		height: statusLabel.text !== "" ? 5*mm : 0
+        height: statusLabel.text !== "" ? 25*dp : 0
 
 		Behavior on height {
 			NumberAnimation {
