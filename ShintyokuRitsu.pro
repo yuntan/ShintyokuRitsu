@@ -4,7 +4,7 @@ TEMPLATE = app
 QT += qml quick widgets network sql
 QMAKE_CXXFLAGS += -std=c++0x
 
-SOURCES += main.cpp
+SOURCES += src/main.cpp
 
 OTHER_FILES += \
 	qml/main.qml \
@@ -23,4 +23,6 @@ OTHER_FILES += \
 	js/Storage.js
 
 RESOURCES += \
-	qml.qrc
+    qml/qml.qrc \
+    img/img.qrc \
+    js/js.qrc

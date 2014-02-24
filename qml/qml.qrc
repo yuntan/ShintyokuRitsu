@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>main.qml</file>
+        <file>Pages/AddTaskPage.qml</file>
+        <file>Pages/MainListPage.qml</file>
+        <file>Pages/TaskItem.qml</file>
+        <file>Components/BoxEdit.qml</file>
+        <file>Components/BoxLabel.qml</file>
+        <file>Components/DayPicker.qml</file>
+        <file>Components/FlatButton.qml</file>
+        <file>Components/LineEdit.qml</file>
+        <file>Components/LineLabel.qml</file>
+        <file>Components/Page.qml</file>
+        <file>Components/ShintyokuPie.qml</file>
+        <file>Components/TimePicker.qml</file>
+    </qresource>
+</RCC>
