@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QtQml>
 #include <QtQuick/QQuickView>
+#include <QScreen>
 #include <QDebug>
 
 #ifdef Q_OS_ANDROID
