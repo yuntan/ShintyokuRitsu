@@ -11,14 +11,14 @@ Page {
 
 	ScrollView {
 		anchors.fill: parent
-		anchors.margins: 3.*mm
+        anchors.margins: 15*dp
 		flickableItem.interactive: true
 		flickableItem.flickableDirection: Flickable.VerticalFlick
 
 		GridLayout {
 			id: mainGrid
 			columns: 2
-			rowSpacing: 5.*mm; columnSpacing: 3.*mm
+            rowSpacing: 25*dp; columnSpacing: 15*dp
 
 			LineLabel {
 				text: qsTr("Task name")
@@ -60,7 +60,7 @@ Page {
 			BoxEdit {
 				id: detailEdit
 				Layout.fillWidth: true
-				Layout.preferredHeight: 30.*mm
+                Layout.preferredHeight: 150*dp
 
 			}
 
@@ -88,7 +88,7 @@ Page {
 		}
 
 		style: ScrollViewStyle {
-			minimumHandleLength: 8.*mm
+            minimumHandleLength: 40*dp
 			transientScrollBars: true
 		}
 	}

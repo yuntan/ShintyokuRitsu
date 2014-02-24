@@ -10,15 +10,13 @@ Rectangle {
 	property alias data: main.data
 	property alias title: titleLabel.text
 	property alias titleBar: titleBarItem.data
-	property color mainColor: "#56c4c3"
-	property color titleColor: "#1ebba6"
+    property color mainColor: "#ffdd55"
+    property color titleColor: "#ff9955"
 
 	//modify statusBar's label
 	signal updateStatusBar(string message)
-	//back 1 page
-	signal back()
-	//open menu
-	function showMenu() { }
+    signal titleIconClicked()
+    signal titleLabelClicked()
 
 	color: mainColor
 
@@ -28,78 +26,78 @@ Rectangle {
 		z:10 // so page contents doesn't draw on top
 		anchors.top: parent.top
 		width: parent.width
-		height: 10*mm
+        height: 50*dp
 
 		color: titleColor
 
 		RowLayout {
 			anchors.fill: parent
-			spacing: 2.*mm
+            spacing: 15*dp
 
-			// Back arrow button
-			Rectangle {
-				id: backButton
-				Layout.preferredWidth: 10*mm
-				Layout.fillHeight: true
-				enabled: page.Stack.index > 0
-				color: Qt.darker(titleColor, 1.2)
-				Image {
-					anchors.fill: parent
-					anchors.margins: 1*mm
-					source: "qrc:/img/aztter64.png"
-					fillMode: Image.PreserveAspectFit
-				}
-				// push feedback
-				Rectangle {
-					anchors.fill: parent
-					color: mouseBack.pressed ? "#40000000" : "transparent"
-				}
-				MouseArea {
-					id: mouseBack
-					anchors.fill: parent
+            Rectangle {
+                id: titleIconRect
+                Layout.minimumWidth: parent.height
+                Layout.fillHeight: true
+//				enabled: page.Stack.index > 1
+                color: Qt.darker(titleColor, 1.2)
+                Image {
+                    id: titleIcon
+                    anchors.fill: parent
+                    anchors.margins: 5*dp
+                    source: "qrc:/img/app128.png"
+                    fillMode: Image.PreserveAspectFit
+                }
+                // push feedback
+                Rectangle {
+                    anchors.fill: parent
+                    color: titleIconMouse.pressed ? "#40000000" : "transparent"
+                }
+                MouseArea {
+                    id: titleIconMouse
+                    anchors.fill: parent
 
-					onClicked: page.back()
-				}
-			}
+                    onClicked: page.titleIconClicked()
+                }
+            }
 
 			Rectangle {
 				id: titleLabelRect
 
 				Layout.fillWidth: true
 				Layout.fillHeight: true
-				color: mouseMenu.pressed ? "#40000000" : "transparent"
+                color: titleLabelMouse.pressed ? "#40000000" : "transparent"
 				Label {
 					id: titleLabel
 
 					width: parent.width
 					anchors {
 						verticalCenter: parent.verticalCenter
-						left: parent.left
+                        left: parent.left
 					}
 
 					color: "whitesmoke"
-					font.pointSize: 21
+                    font.pointSize: 30*dp
 					fontSizeMode: Text.HorizontalFit
 					font.bold: true
 				}
 				MouseArea {
-					id: mouseMenu
+                    id: titleLabelMouse
 					anchors.fill: parent
-					onClicked: page.showMenu()
+                    onClicked: page.titleLabelClicked()
 				}
 			}
 
 			Item {
-				Layout.minimumWidth: titleBarItem.childrenRect.width + 2.*mm
+                Layout.minimumWidth: titleBarItem.childrenRect.width + 2*dp
 				Layout.fillHeight: true
 				ToolBar {
 					id: titleBarItem
 					anchors {
-						fill: parent
-						topMargin: 1.*mm
-						bottomMargin: 1.*mm
-						rightMargin: 2.*mm
-					}
+                        fill: parent
+                        topMargin: 5*dp
+                        bottomMargin: 5*dp
+                        rightMargin: 15*dp
+                    }
 					style: ToolBarStyle {
 						background: Rectangle {
 							width: control.width; height: control.height
@@ -115,7 +113,7 @@ Rectangle {
 	Rectangle {
 		id: titleBarLine
 		anchors.top: titleBarRect.bottom
-		width: parent.width; height: 1*mm
+        width: parent.width; height: 5*dp
 		color: Qt.darker(titleColor, 1.6)
 	}
 
@@ -130,18 +128,6 @@ Rectangle {
 		gradient: Gradient {
 			GradientStop {position: 0; color: "#80000000"}
 			GradientStop {position: 1; color: "#00000000"}
-		}
-	}
-
-	Image {
-		id: backgroundImage
-
-		z: 0
-		anchors {
-			top: titleBarLine.bottom
-			bottom: parent.bottom
-			left: parent.left
-			right: parent.right
 		}
 	}
 

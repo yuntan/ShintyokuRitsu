@@ -24,12 +24,12 @@ Rectangle {
 		id: indicatorCol
 		anchors {
 			top: parent.top
-			topMargin: 1.*mm
+            topMargin: 5*dp
 			bottom: parent.bottom
-			bottomMargin: 1.*mm
+            bottomMargin: 5*dp
 			left: parent.left
 		}
-		width: 3.*mm
+        width: 15*dp
 		spacing: 0
 
 		Rectangle {
@@ -59,14 +59,14 @@ Rectangle {
 			top: parent.top
 			left: indicatorCol.right
 			right: parent.right
-			margins: 2.*mm
+            margins: 10*dp
 		}
-		spacing: 1.*mm
+        spacing: 5*dp
 
 		ColumnLayout {
 			id: textCol
 			Layout.fillWidth: true; Layout.fillHeight: true
-			spacing: 2.*mm
+            spacing: 10*dp
 			LineLabel {
 				id: titleLabel
 				Layout.fillWidth: true
@@ -99,11 +99,11 @@ Rectangle {
 		anchors {
 			bottom: parent.bottom
 			left: parent.left
-			leftMargin: 4.*mm
+            leftMargin: 20*dp
 			right: parent.right
-			rightMargin: 4.*mm
+            rightMargin: 20*dp
 		}
-		height: 2
+        height: 2*dp
 		color: "#666666"
 	}
 

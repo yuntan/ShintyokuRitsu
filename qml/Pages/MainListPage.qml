@@ -24,8 +24,7 @@ Page {
 				var storage = new JS.Storage()
 				var r = storage.readTasks()
 				for(var i = 0; i < r.rows.length; i++) {
-					listModel.append({
-										 "id": r.rows.item(i)['id'],
+                    listModel.append({   "id": r.rows.item(i)['id'],
 										 "name": r.rows.item(i)['name'],
 										 "isProject": r.rows.item(i)['isProject'],
 										 "importance": r.rows.item(i)['importance'],
@@ -51,7 +50,7 @@ Page {
 		}
 
 		style: ScrollViewStyle {
-			minimumHandleLength: 8.*mm
+            minimumHandleLength: 8*dp
 			transientScrollBars: true
 		}
 	}

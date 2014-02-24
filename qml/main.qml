@@ -8,12 +8,10 @@ ApplicationWindow {
 	id: mainWindow
 	title: qsTr("ShintyokuRitsu")
 
-	width: 360
-	height: 640
+    width: 360*dp; height: 640*dp
+    minimumWidth: 360*dp; minimumHeight: 200*dp
 
-	property real mm: Screen.pixelDensity
-
-	Component.onCompleted : {
+    Component.onCompleted: {
 		console.log("name: ", Screen.name)
 		console.debug("width: ", Screen.width, " height: ", Screen.height)
 		if(Screen.primaryOrientation==Qt.LandscapeOrientation) {
@@ -26,10 +24,11 @@ ApplicationWindow {
 	}
 
 	property Component mainListPage: MainListPage {
+//        onTitleIconClicked: openSideMenu()
 		onAddTask: stackView.push(addTaskPage)
 	}
 	property Component addTaskPage: AddTaskPage {
-		onBack: stackView.pop()
+        onTitleIconClicked: stackView.pop()
 	}
 
 	function updateStatusBar (message) {
@@ -99,12 +98,12 @@ ApplicationWindow {
 
 		style: StatusBarStyle {
 			background: Rectangle {
-				implicitHeight: 6*mm
+                implicitHeight: 25*dp
 				implicitWidth: mainWindow.width
 				color: "#2d373f"
 				Rectangle {
 					width: parent.width
-					height: 2
+                    height: 2*dp
 					color: Qt.darker(parent.color, 1.5)
 				}
 			}
@@ -117,7 +116,7 @@ ApplicationWindow {
 			textFormat: Text.RichText
 			onLinkActivated: Qt.openUrlExternally(link)
 			wrapMode: Text.Wrap
-			font.pointSize: 12
+            font.pixelSize: 20*dp
 			font.bold: true
 			color: "whitesmoke"
 			verticalAlignment: Text.AlignVCenter
@@ -126,7 +125,7 @@ ApplicationWindow {
 
 		Timer {
 			id: statusBarTimer
-			interval: 10000
+            interval: 5000
 			running: false
 			triggeredOnStart: false
 			onTriggered: statusLabel.text = ""
