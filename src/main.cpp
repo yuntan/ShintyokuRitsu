@@ -8,12 +8,15 @@
 #include <QtAndroidExtras/QAndroidJniObject>
 #endif
 
+#include "piechart.h"
+
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
-	qDebug() << "OfflineStoragePath: " << engine.offlineStoragePath();
+    qmlRegisterType<PieBorder>();
+    qmlRegisterType<PieChart>("ShintyokuRitsu", 1, 0, "PieChart");
 
     //implement density-independent pixel
     int dp = 1;

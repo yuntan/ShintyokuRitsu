@@ -6,7 +6,12 @@ android : QT += androidextras
 
 QMAKE_CXXFLAGS += -std=c++0x
 
-SOURCES += src/main.cpp
+SOURCES += \
+    src/main.cpp \
+    src/piechart.cpp
+
+HEADERS += \
+    src/piechart.h
 
 QML_FILES += \
 	qml/main.qml \
