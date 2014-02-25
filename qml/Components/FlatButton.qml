@@ -4,6 +4,7 @@ import QtQuick.Controls.Styles 1.1
 
 Button {
     property int fontPixelSize: 0
+    property color color: "transparent"
 
     style: ButtonStyle {
         background: Rectangle {
@@ -12,7 +13,7 @@ Button {
             Rectangle {
                 anchors.fill: parent
                 anchors.margins: 2*dp
-                color: "transparent"
+                color: control.color
                 border.color: "white"
                 border.width: 2*dp
             }
