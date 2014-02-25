@@ -8,7 +8,7 @@ Rectangle {
 
     Image {
         id: image
-        width: parent.width * 0.8; height: parent.height * 0.8
+        width: parent.width * 0.6; height: parent.height * 0.6
         anchors.centerIn: parent
         fillMode: Image.PreserveAspectFit
     }
