@@ -29,7 +29,9 @@ JS_FILES += \
 	js/Storage.js
 
 OTHER_FILES += $$QML_FILES $$JS_FILES \
-    android/AndroidManifest.xml
+    android/AndroidManifest.xml \
+    qml/Pages/TaskPage.qml \
+    js/Utils.js
 
 RESOURCES += \
     qml/qml.qrc \

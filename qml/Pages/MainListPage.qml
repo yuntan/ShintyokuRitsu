@@ -10,22 +10,25 @@ Page {
 	title: qsTr("How is the progress?")
 
 	signal addTask()
+    signal openTask(int taskId)
 
 	ScrollView {
 		anchors.fill: parent
+
 		flickableItem.interactive: true
 		flickableItem.flickableDirection: Flickable.VerticalFlick
 
         ColumnLayout {
             id: mainCol
-            width: parent.width
+            width: mainListPage.width
+
             spacing: 0
             Repeater {
                 model: {
                     console.debug("Making model...")
                     var r = storage.readTasks()
                     for(var i = 0; i < r.rows.length; i++) {
-                        listModel.append({   "id": r.rows.item(i)['id'],
+                        listModel.append({   "taskId": r.rows.item(i)['id'],
                                              "name": r.rows.item(i)['name'],
                                              "isProject": r.rows.item(i)['isProject'],
                                              "importance": r.rows.item(i)['importance'],
@@ -40,7 +43,8 @@ Page {
                 }
 
                 delegate: TaskItem {
-                    width: mainWindow.width // BUG? mainListPage.width = 0
+                    width: mainWindow.width
+                    taskId: model.taskId
                     name: model.name
                     isProject: model.isProject
                     importance: model.importance
@@ -48,6 +52,7 @@ Page {
                     detail: model.detail
                     percent: model.percent
                     folder: model.folder
+                    onClicked: openTask(taskId)
                 }
             }
         }

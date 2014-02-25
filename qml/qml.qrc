@@ -15,5 +15,6 @@
         <file>Components/TimePicker.qml</file>
         <file>Components/TitleBarButton.qml</file>
         <file>Components/Card.qml</file>
+        <file>Pages/TaskPage.qml</file>
     </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/js">
         <file>Storage.js</file>
+        <file>Utils.js</file>
     </qresource>
 </RCC>

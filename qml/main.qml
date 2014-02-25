@@ -28,13 +28,23 @@ ApplicationWindow {
 //        onTitleIconClicked: openSideMenu()
 		onAddTask: stackView.push(addTaskPage)
         onUpdateStatusBar: mainWindow.updateStatusBar(message)
+        onOpenTask: {
+            openingId = taskId // cannot access taskPage.taskId.
+            stackView.push(taskPage)
+        }
 	}
 	property Component addTaskPage: AddTaskPage {
         onTitleIconClicked: stackView.pop()
         onUpdateStatusBar: mainWindow.updateStatusBar(message)
 	}
+    property Component taskPage: TaskPage {
+        taskId: openingId // cannot access taskPage.taskId. workaround
+        onTitleIconClicked: stackView.pop()
+        onUpdateStatusBar: mainWindow.updateStatusBar(message)
+    }
 
     property var storage: new JS.Storage()
+    property int openingId
 
 	function updateStatusBar (message) {
 		statusLabel.text = message
