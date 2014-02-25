@@ -4,7 +4,8 @@
 /*********************************************************
   id (int): Task ID
   name (str): Task name
-  isProject (bool): The task can contain sub tasks of not.
+  isProject (int): If the task can contain sub tasks, 1.
+    Else 0.
   importance (int): 0, 1, 2, or 3. Higher priority higher
     number.
   deadline (date): Task deadline

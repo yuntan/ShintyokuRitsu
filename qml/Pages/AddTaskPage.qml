@@ -51,6 +51,7 @@ Page {
                 }
                 GroupBox {
                     Layout.fillWidth: true
+                    title: "   " // when title is empty string, checkboxes out of place
                     Column {
                         anchors.fill: parent
                         height: childrenRect.height
@@ -68,6 +69,11 @@ Page {
                         CheckBox {
                             id: impHighCheck
                             text: "High"
+                            exclusiveGroup: importanceGroup
+                        }
+                        CheckBox {
+                            id: impVHighCheck
+                            text: "Very high"
                             exclusiveGroup: importanceGroup
                         }
                     }
@@ -108,19 +114,18 @@ Page {
                 }
                 Item {
                     Layout.fillWidth: true
+                    Layout.preferredHeight: 19*dp
                     Slider {
                         id: rateSlider
-                        width: parent.width * 0.7
+                        width: parent.width * 0.8; height: parent.height
                         anchors.left: parent.left
                         minimumValue: 0; maximumValue: 100
                         stepSize: 10; tickmarksEnabled: true
                         updateValueWhileDragging: true
                     }
                     LineLabel {
-                        width: parent.width * 0.3
                         anchors.right: parent.right
                         text: rateSlider.value + "%"
-                        horizontalAlignment: Label.AlignRight
                     }
                 }
 
@@ -140,15 +145,19 @@ Page {
                 text: qsTr("Add task")
                 fontPixelSize: 30*dp
                 onClicked: {
-                    if(nameEdit.text === "" || deadlineEdit.text === "" ||
-                            detailEdit.text === "" || targetTimeEdit.text === "") {
-                        console.debug("aaa")
-                        updateStatusBar(qsTr("Name/Deadline/Detail/Target Time is required"))
+                    if(nameEdit.text === "") {
+                        updateStatusBar(qsTr("Name is required"))
                         return
                     }
+                    if(targetTimeEdit.text === "") {
+                        updateStatusBar(qsTr("Target Time is required"))
+                        return
+                    }
+
+                    var importance = impLowCheck.checked ? 0 : impMedCheck.checked ? 1 : impHighCheck.checked ? 2 : 3
                     storage.addTask(nameEdit.text, projCheck.checked, importance,
                                     deadlineEdit.text, detailEdit.text, targetTimeEdit.text,
-                                    rateSlider.value, folderEdit.text, 0)
+                                    rateSlider.value, folderEdit.text, -1)
                     updateStatusBar(qsTr("Task added"))
                     stackView.pop()
                 }
