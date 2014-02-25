@@ -4,20 +4,21 @@ import "../Components"
 
 Rectangle {
 	id: taskItem
-	property int id
+
+    property int taskId
     property alias name: titleLabel.text
 	property bool isProject
 	property int importance
-    property alias deadline: deadlineLabel.text
+    property date deadline: undefined
     property alias detail: detailLabel.text
-    property int percent
+    property alias percent: pie.percent
     property string folder
 	property int projectId
 
-	signal pressed()
+    signal clicked()
 	signal pressAndHold()
 
-    height: mainRow.height + 20*dp
+    height: textCol.height + 20*dp
     color: mouse.pressed ? "#40000000" : "transparent"
 
     ColumnLayout {
@@ -31,7 +32,6 @@ Rectangle {
         }
         width: 15*dp
         spacing: 0
-
 
         Rectangle {
             id: importanceRect
@@ -54,44 +54,44 @@ Rectangle {
         }
     }
 
-    RowLayout {
-        id: mainRow
+    ColumnLayout {
+        id: textCol
         anchors {
             top: parent.top
             left: indicatorCol.right
-            right: parent.right
+            right: pie.left
             margins: 10*dp
         }
         spacing: 5*dp
-        height: textCol.height
-
-        ColumnLayout {
-            id: textCol
+        LineLabel {
+            id: titleLabel
             Layout.fillWidth: true
-            spacing: 10*dp
-            LineLabel {
-                id: titleLabel
-                Layout.fillWidth: true
-                font.bold: true
-                font.pointSize: 15
-            }
-            LineLabel {
-                id: detailLabel
-                Layout.fillWidth: true
-                font.pointSize: 12
-            }
-            LineLabel {
-                id: deadlineLabel
-                Layout.fillWidth: true
-                color: "red"
-            }
+            font.bold: true
+            font.pointSize: 15
         }
+        LineLabel {
+            id: detailLabel
+            Layout.fillWidth: true
+            font.pointSize: 12
+        }
+        LineLabel {
+            id: deadlineLabel
+            Layout.fillWidth: true
+            color: deadline != undefined ? "red" : "#666666"
+            text: deadline != undefined
+                  ? "Deadline: " + deadline.getDate()
+                  : "no deadline"
+        }
+    }
 
-        ShintyokuPie {
-            id: pie
-            Layout.preferredWidth: parent.width / 3
-            Layout.preferredHeight: width
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+    ShintyokuPie {
+        id: pie
+        width: height
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+            margins: 5*dp
         }
     }
 
@@ -111,7 +111,7 @@ Rectangle {
     MouseArea {
         id: mouse
         anchors.fill: parent
-        onPressed: taskItem.pressed()
+        onClicked: taskItem.clicked()
         onPressAndHold: taskItem.pressAndHold()
     }
 }
