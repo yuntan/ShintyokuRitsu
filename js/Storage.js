@@ -52,7 +52,7 @@ Storage.prototype = {
                 r = tx.executeSql("SELECT * FROM Tasks WHERE projectId = ?", projectId)
 			}
 		})
-		return r
+        return r
 	},
 
     // Returns a task its id is matches with argument.
@@ -67,7 +67,7 @@ Storage.prototype = {
                 r = tx.executeSql("SELECT * FROM Tasks WHERE id = ?", id)
 			}
 		})
-		return r
+        return r.rows.item(0)
     },
 
     // Returns tasks its belonging folder is match with argument.
