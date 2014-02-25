@@ -18,6 +18,9 @@ QML_FILES += \
 	qml/Pages/MainListPage.qml \
 	qml/Pages/TaskItem.qml \
 	qml/Pages/AddTaskPage.qml \
+    qml/Pages/TaskPage.qml \
+    qml/Pages/ImportanceRect.qml \
+    qml/Pages/FolderRect.qml \
 	qml/Components/Page.qml \
 	qml/Components/ShintyokuPie.qml \
 	qml/Components/LineLabel.qml \
@@ -27,16 +30,14 @@ QML_FILES += \
 	qml/Components/DayPicker.qml \
 	qml/Components/TimePicker.qml \
     qml/Components/FlatButton.qml \
-    qml/Components/TitleBarButton.qml \
-    qml/Components/Card.qml
+    qml/Components/TitleBarButton.qml
 
 JS_FILES += \
-	js/Storage.js
+    js/Storage.js \
+    js/Utils.js
 
 OTHER_FILES += $$QML_FILES $$JS_FILES \
-    android/AndroidManifest.xml \
-    qml/Pages/TaskPage.qml \
-    js/Utils.js
+    android/AndroidManifest.xml
 
 RESOURCES += \
     qml/qml.qrc \

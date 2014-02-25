@@ -14,7 +14,8 @@
         <file>Components/ShintyokuPie.qml</file>
         <file>Components/TimePicker.qml</file>
         <file>Components/TitleBarButton.qml</file>
-        <file>Components/Card.qml</file>
         <file>Pages/TaskPage.qml</file>
+        <file>Pages/ImportanceRect.qml</file>
+        <file>Pages/FolderRect.qml</file>
     </qresource>
 </RCC>
