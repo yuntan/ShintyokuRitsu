@@ -2,6 +2,7 @@ import QtQuick 2.2
 import ShintyokuRitsu 1.0
 
 PieChart {
+    id: pie
     property int percent: 0
 
     color: "#c83737"; border.color: color
@@ -11,7 +12,7 @@ PieChart {
     PieChart {
         anchors {
             fill: parent
-            margins: 10*dp
+            margins: pie.height / 10
         }
         color: "#ff7f2a"; border.color: color
 
@@ -19,7 +20,7 @@ PieChart {
             anchors.centerIn: parent
             text: percent + "%"
             color: "#f9f9f9"
-            font.bold: true
+            font.bold: true; font.pixelSize: pie.height / 4
         }
     }
 
