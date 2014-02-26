@@ -41,6 +41,16 @@ ApplicationWindow {
         taskId: openingId // cannot access taskPage.taskId. workaround
         onTitleIconClicked: stackView.pop()
         onUpdateStatusBar: mainWindow.updateStatusBar(message)
+        onOpenCommitPage: {
+            openingId = taskId
+            stackView.push(commitPage)
+        }
+    }
+    property Component commitPage: CommitPage {
+        taskId: openingId
+        onTitleIconClicked: stackView.pop()
+        onUpdateStatusBar: mainWindow.updateStatusBar(message)
+        onCommited: stackView.pop()
     }
 
     property var storage: new JS.Storage()

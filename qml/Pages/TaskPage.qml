@@ -10,7 +10,7 @@ Page {
     property int taskId
     property var task
 
-    signal commit(int taskId)
+    signal openCommitPage(int taskId)
 
     onTaskIdChanged: task = storage.readTaskById(taskId)
 
@@ -117,7 +117,7 @@ Page {
                 color: "#66ff2a2a"
                 text: qsTr("Commit")
                 fontPixelSize: 30*dp
-                onClicked: commit(taskId)
+                onClicked: openCommitPage(taskId)
             }
         }
 

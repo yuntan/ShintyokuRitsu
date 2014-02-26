@@ -17,5 +17,7 @@
         <file>Pages/TaskPage.qml</file>
         <file>Pages/ImportanceRect.qml</file>
         <file>Pages/FolderRect.qml</file>
+        <file>Pages/CommitPage.qml</file>
+        <file>Pages/RateCounter.qml</file>
     </qresource>
 </RCC>

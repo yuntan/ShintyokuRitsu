@@ -21,6 +21,8 @@ QML_FILES += \
     qml/Pages/TaskPage.qml \
     qml/Pages/ImportanceRect.qml \
     qml/Pages/FolderRect.qml \
+    qml/Pages/CommitPage.qml \
+    qml/Pages/RateCounter.qml \
 	qml/Components/Page.qml \
 	qml/Components/ShintyokuPie.qml \
 	qml/Components/LineLabel.qml \
