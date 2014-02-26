@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/img">
-        <file>app64.png</file>
-        <file>app128.png</file>
-        <file>app256.png</file>
         <file>plus.png</file>
+        <file>app36.png</file>
+        <file>app48.png</file>
+        <file>app72.png</file>
     </qresource>
 </RCC>

@@ -44,7 +44,7 @@ Rectangle {
                     id: titleIcon
                     anchors.fill: parent
                     anchors.margins: 5*dp
-                    source: "qrc:/img/app128.png"
+                    source: "qrc:/img/app72.png"
                     fillMode: Image.PreserveAspectFit
                 }
                 // push feedback
