@@ -2,15 +2,17 @@
 .import QtQuick.LocalStorage 2.0 as Sql
 
 /*********************************************************
-  id (int): Task ID
+  id (int): Task ID. Unique key.
   name (str): Task name
   isProject (int): If the task can contain sub tasks, 1.
     Else 0.
   importance (int): 0, 1, 2, or 3. Higher priority higher
     number.
-  deadline (date): Task deadline
+  deadline (int): Task deadline in Unix time format.
+    (no deadline -> 0)
   detail (str): Task detail
   targetTime (int): Estimated time the task requires in min
+  timeLapse (int): The total sum of time recorded.
   percent (int): Current task rate
   folder (str): folder the task belong to
   projectId (int): If the task belongs to another project,
@@ -25,13 +27,14 @@ function Storage() {
 	console.debug("Initializing database...")
 	this.db.transaction(function(tx) {tx.executeSql(
 			'CREATE TABLE IF NOT EXISTS Tasks(' +
-			'id INTEGER PRIMARY KEY, ' +
+            'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
 			'name TEXT, ' +
-			'isProject TEXT, ' +
+            'isProject INTEGER, ' +
             'importance INTEGER, ' +
-			'deadline NONE, ' +
+            'deadline INTEGER, ' +
 			'detail TEXT, ' +
 			'targetTime INTEGER, ' +
+            'timeLapse INTEGER, ' +
 			'percent INTEGER, ' +
             'folder TEXT, ' +
 			'projectId INTEGER)')})
@@ -85,15 +88,30 @@ Storage.prototype = {
         return r
     },
 
+    // Returns tasks its deadline is posterior to argument
+    readTasksByDeadline: function(unixtime) {
+        console.debug("Reading task... (folder: " + folder + ")")
+        var r
+        this.db.transaction(function(tx) {
+            if(unixtime === undefined) {
+                return
+            }
+            else {
+                r = tx.executeSql("SELECT * FROM Tasks WHERE deadline > ?", unixtime)
+            }
+        })
+        return r
+    },
+
     // Create a new task in database
     addTask : function(name, isProject, importance, deadline, detail, targetTime, percent, folder, projectId) {
 		console.debug("Adding Task...")
 		this.db.transaction(function(tx) {
 			var r = tx.executeSql(
                     "INSERT OR REPLACE INTO Tasks(name, isProject, importance, " +
-                    "deadline, detail, targetTime, percent, folder, projectId) " +
-                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    [name, isProject, importance, deadline, detail, targetTime, percent, folder, projectId])
+                    "deadline, detail, targetTime, timeLapse, percent, folder, projectId) " +
+                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    [name, isProject, importance, deadline, detail, targetTime, 0, percent, folder, projectId])
 			console.log("Task Saved: " + r)
 		})
 	}
