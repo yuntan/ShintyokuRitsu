@@ -4,6 +4,7 @@ import QtQuick.Window 2.0
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 import "../Components"
+import "../../js/Utils.js" as Utils
 
 Page {
 	id: mainListPage
@@ -24,23 +25,7 @@ Page {
 
             spacing: 0
             Repeater {
-                model: {
-                    console.debug("Making model...")
-                    var r = storage.readTasks()
-                    for(var i = 0; i < r.rows.length; i++) {
-                        listModel.append({   "taskId": r.rows.item(i)['id'],
-                                             "name": r.rows.item(i)['name'],
-                                             "isProject": r.rows.item(i)['isProject'],
-                                             "importance": r.rows.item(i)['importance'],
-                                             "deadline": r.rows.item(i)['deadline'],
-                                             "detail": r.rows.item(i)['detail'],
-                                             "targetTime": r.rows.item(i)['targetTime'],
-                                             "percent": r.rows.item(i)['percent'],
-                                             "folder": r.rows.item(i)['folder'],
-                                             "projectId": r.rows.item(i)['projectId']})
-                    }
-                    return listModel
-                }
+                model: Utils.taskModel(storage.readTasks(), mainListPage)
 
                 delegate: TaskItem {
                     width: mainWindow.width
