@@ -17,10 +17,16 @@ PieChart {
         color: "#ff7f2a"; border.color: color
 
         LineLabel {
+            id: percentLabel
             anchors.centerIn: parent
-            text: percent + "%"
-            color: "#f9f9f9"
-            font.bold: true; font.pixelSize: pie.height / 4
+            text: percent; color: "whitesmoke"
+            //                color: "#f9f9f9"
+            font.bold: true; font.pixelSize: pie.height * 3 / 8
+        }
+        LineLabel {
+            anchors { top: percentLabel.top; left: percentLabel.right }
+            text: "%"; color: "#ffccaa"
+            font.bold: true; font.pixelSize: pie.height / 6
         }
     }
 

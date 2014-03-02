@@ -29,7 +29,8 @@ Item {
                 font.pointSize: 54
             }
             LineLabel {
-                text: "h"; font.pixelSize: 30; font.bold: true
+                text: "h"; color: "#ff9955"
+                font.pixelSize: 30; font.bold: true
                 Layout.alignment: Qt.AlignBottom
             }
         }
@@ -49,7 +50,8 @@ Item {
                 font.pointSize: 54
             }
             LineLabel {
-                text: "m"; font.pixelSize: 30; font.bold: true
+                text: "m"; color: "#ff9955"
+                font.pixelSize: 30; font.bold: true
                 Layout.alignment: Qt.AlignBottom
             }
         }

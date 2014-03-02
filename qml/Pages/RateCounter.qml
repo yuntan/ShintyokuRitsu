@@ -41,8 +41,8 @@ Item {
                 top: parent.top; right: control.left
                 rightMargin: 20*dp
             }
-            text: "%"
-            font.pointSize: 18
+            text: "%"; color: "#ff9955"
+            font.pointSize: 18; font.bold: true
         }
 
         CountControl {
