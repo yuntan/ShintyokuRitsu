@@ -13,17 +13,10 @@ Item {
 
     height: label.height + counter.anchors.margins + counter.height
 
-    LineLabel {
-        id: label
-        anchors { top: parent.top; left: parent.left }
-        text: "Passage of time during the task:"
-        font.pixelSize: 18
-    }
-
     Row {
         id: counter
         anchors {
-            top: label.bottom; horizontalCenter: parent.horizontalCenter
+            top: parent.top; horizontalCenter: parent.horizontalCenter
             margins: 10*dp
         }
         height: 80*dp; spacing: 15*dp

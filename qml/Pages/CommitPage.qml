@@ -37,6 +37,7 @@ Page {
             Item { Layout.fillWidth: true; Layout.preferredHeight: 0 }
 
             LineLabel {
+                id: dateLabel
                 text: new Date().toLocaleDateString()
                 font.pointSize: 18; font.bold: true
             }
@@ -47,28 +48,37 @@ Page {
                 currentRate: task['percent']
             }
 
-            TimeCounter {
-                id: timeCounter
-                Layout.fillWidth: true; Layout.preferredHeight: height
-            }
-
-            ShintyokuBar {
-                id: timeLapseBar
-                Layout.fillWidth: true; Layout.preferredHeight: 40*dp
-                color: "crimson"
-//                percent: (task['passedTime'] + timeCounter.timeLapse) / task['targetTime']
+            ColumnLayout {
+                id: timeCountItem
+                Layout.fillWidth: true
                 LineLabel {
-                    anchors.centerIn: parent
-                    color: "darkorange"; font.bold: true; font.pixelSize: 15
-                    text: "%1h %2m / %3h %4m"
-                    .arg(Math.floor(task['passedTime'] / 60))
-                    .arg(task['passedTime'] % 60)
-                    .arg(Math.floor(task['targetTime'] / 60))
-                    .arg(task['targetTime'] % 60)
+                    id: label
+                    text: "Passage of time during the task:"
+                    font.pixelSize: 18
+                }
+                TimeCounter {
+                    id: timeCounter
+                    Layout.fillWidth: true; Layout.preferredHeight: height
+                }
+                ShintyokuBar {
+                    id: timeLapseBar
+                    Layout.fillWidth: true; Layout.preferredHeight: 40*dp
+                    color: "crimson"
+    //                percent: (task['passedTime'] + timeCounter.timeLapse) / task['targetTime']
+                    LineLabel {
+                        anchors.centerIn: parent
+                        color: "darkorange"; font.bold: true; font.pixelSize: 15
+                        text: "%1h %2m / %3h %4m"
+                        .arg(Math.floor(task['passedTime'] / 60))
+                        .arg(task['passedTime'] % 60)
+                        .arg(Math.floor(task['targetTime'] / 60))
+                        .arg(task['targetTime'] % 60)
+                    }
                 }
             }
 
             Column {
+                id: commentCol
                 Layout.fillWidth: true; Layout.preferredHeight: childrenRect.height
 
                 LineLabel { text: "Comment:" }

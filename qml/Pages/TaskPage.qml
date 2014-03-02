@@ -88,25 +88,28 @@ Page {
                 Layout.preferredHeight: 0
             }
 
-            Rectangle {
-                id: timeLapseItem
-                Layout.fillWidth: true; Layout.preferredHeight: 40*dp
-                color: "transparent"; border.color: "white"
-                Rectangle {
-                    anchors {
-                        top: parent.top; bottom: parent.bottom
-                        left: parent.left
-                    }
-//                    width: parent.width * task['targetTime'] / passedTime
-                    width: parent.width * 0.7
-                    color: "#c83737"
-                }
+            ColumnLayout {
+                id: timeCountItem
+                Layout.fillWidth: true
                 LineLabel {
-                    anchors.centerIn: parent
-                    color: "whitesmoke"
-                    text: "Target time: %1h %2m"
-                    .arg(Math.floor(task['targetTime'] / 60))
-                    .arg(task['targetTime'] % 60)
+                    id: label
+                    text: "Passage of time:"
+                    font.pixelSize: 18
+                }
+                ShintyokuBar {
+                    id: timeLapseBar
+                    Layout.fillWidth: true; Layout.preferredHeight: 40*dp
+                    color: "crimson"
+//                    percent: task['passedTime'] / task['targetTime']
+                    LineLabel {
+                        anchors.centerIn: parent
+                        color: "darkorange"; font.bold: true; font.pixelSize: 15
+                        text: "%1h %2m / %3h %4m"
+                        .arg(Math.floor(task['passedTime'] / 60))
+                        .arg(task['passedTime'] % 60)
+                        .arg(Math.floor(task['targetTime'] / 60))
+                        .arg(task['targetTime'] % 60)
+                    }
                 }
             }
 
