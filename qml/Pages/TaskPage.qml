@@ -25,18 +25,17 @@ Page {
     }
 
     ScrollView {
-        anchors {
-            fill: parent
-            margins: 10*dp
-        }
-
+        anchors { fill: parent; leftMargin: 20*dp }
         flickableItem.interactive: true
         flickableItem.flickableDirection: Flickable.VerticalFlick
 
         contentItem: ColumnLayout {
             id: mainCol
-            width: taskPage.width - 20*dp // referencing parent is not effective
-            spacing: 20*dp
+            width: taskPage.width - 40*dp // referencing parent is not effective
+            spacing: 30*dp
+
+            // spacer
+            Item { Layout.fillWidth: true; Layout.preferredHeight: 0 }
 
             Item {
                 id: mainItem
