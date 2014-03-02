@@ -4,5 +4,10 @@
         <file>app36.png</file>
         <file>app48.png</file>
         <file>app72.png</file>
+        <file>downArrow.png</file>
+        <file>downArrow2.png</file>
+        <file>minus.png</file>
+        <file>upArrow.png</file>
+        <file>upArrow2.png</file>
     </qresource>
 </RCC>
