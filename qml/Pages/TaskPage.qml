@@ -93,7 +93,7 @@ Page {
                 LineLabel {
                     id: label
                     text: "Passage of time:"
-                    font.pixelSize: 18
+                    font.pointSize: 15
                 }
                 ShintyokuBar {
                     id: timeLapseBar
@@ -102,7 +102,7 @@ Page {
 //                    percent: task['passedTime'] / task['targetTime']
                     LineLabel {
                         anchors.centerIn: parent
-                        color: "darkorange"; font.bold: true; font.pixelSize: 15
+                        color: "darkorange"; font.bold: true; font.pointSize: 15
                         text: "%1h %2m / %3h %4m"
                         .arg(Math.floor(task['passedTime'] / 60))
                         .arg(task['passedTime'] % 60)
