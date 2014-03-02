@@ -23,6 +23,7 @@ QML_FILES += \
     qml/Pages/FolderRect.qml \
     qml/Pages/CommitPage.qml \
     qml/Pages/RateCounter.qml \
+    qml/Pages/TimeCounter.qml \
 	qml/Components/Page.qml \
 	qml/Components/ShintyokuPie.qml \
 	qml/Components/LineLabel.qml \
@@ -32,7 +33,9 @@ QML_FILES += \
 	qml/Components/DayPicker.qml \
 	qml/Components/TimePicker.qml \
     qml/Components/FlatButton.qml \
-    qml/Components/TitleBarButton.qml
+    qml/Components/TitleBarButton.qml \
+    qml/Components/CountControl.qml \
+    qml/Components/ShintyokuBar.qml
 
 JS_FILES += \
     js/Storage.js \

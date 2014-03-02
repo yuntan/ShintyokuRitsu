@@ -19,5 +19,8 @@
         <file>Pages/FolderRect.qml</file>
         <file>Pages/CommitPage.qml</file>
         <file>Pages/RateCounter.qml</file>
+        <file>Components/CountControl.qml</file>
+        <file>Components/ShintyokuBar.qml</file>
+        <file>Pages/TimeCounter.qml</file>
     </qresource>
 </RCC>
